@@ -34,6 +34,7 @@ class Factory
             'array'  => '\\phpbu\\App\\Adapter\\PHPArray',
             'dotenv' => '\\phpbu\\App\\Adapter\\Dotenv',
             'env'    => '\\phpbu\\App\\Adapter\\Env',
+            'rpass'  => '\\phpbu\\App\\Adapter\\RPass',
         ],
         'runner' => [
             'bootstrap' => '\\phpbu\\App\\Runner\\Bootstrap',
