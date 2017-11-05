@@ -25,6 +25,13 @@ abstract class Abstraction
     protected $cmd;
 
     /**
+     * List of acceptable exit codes.
+     *
+     * @var int[]
+     */
+    protected $acceptableExitCodes = [0];
+
+    /**
      * Absolute path to command.
      *
      * @var string
@@ -56,10 +63,7 @@ abstract class Abstraction
      */
     public function getCommandLine() : CommandLine
     {
-        if ($this->commandLine == null) {
-            $this->commandLine = $this->createCommandLine();
-        }
-        return $this->commandLine;
+        return $this->createCommandLine();
     }
 
     /**
@@ -78,6 +82,16 @@ abstract class Abstraction
     public function getCommand() : string
     {
         return $this->getCommandLine()->getCommand();
+    }
+
+    /**
+     * Returns a lost of acceptable exit codes.
+     *
+     * @return array
+     */
+    public function getAcceptableExitCodes() : array
+    {
+        return $this->acceptableExitCodes;
     }
 
     /**

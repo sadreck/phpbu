@@ -145,23 +145,11 @@ class Tar extends SimulatorExecutable implements Simulator
 
         $result->debug($tar->getCmdPrintable());
 
-        if ($this->tarFailed($tar)) {
+        if (!$tar->isSuccessful()) {
             throw new Exception('tar failed: ' . $tar->getStdErr());
         }
 
         return $this->createStatus($target);
-    }
-
-    /**
-     * Check if tar failed.
-     *
-     * @param  \phpbu\App\Cli\Result
-     * @return bool
-     */
-    public function tarFailed(CliResult $tar) : bool
-    {
-        $ignoreFail = $this->ignoreFailedRead && !$tar->isSuccessful();
-        return !$tar->isSuccessful() && !$ignoreFail;
     }
 
     /**
